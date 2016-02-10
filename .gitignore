@@ -1,0 +1,7 @@
+# MATLAB files
+*.asv
+*.mat
+*.fig
+
+# Sample GUI file
+testGUI.m
