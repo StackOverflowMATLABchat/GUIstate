@@ -1,18 +1,17 @@
-function saveGUIstate(h)
+function [output] = saveGUIstate(h)
 % Write better documentation here <-
 %
 % Input is a structure array of handles from programmatic or GUIDE GUIs
-% Output is a saved *.mat file with the specified properties
+% Output is a structure of the handles with nested structures for each
+% property to store.
 %
 % Assumes all structure arrays with the same field name are of the same 
 % object type (e.g. 3 sliders stored as h.slider(1), h.slider(2), ...) so 
 % the user can utilize the return of set/get natively.
 
 propertystruct = initializeproperties();
-outfilename = 'savedState.mat';
 
 objectlist = fieldnames(h);
-
 for ii = 1:length(objectlist)
     objtype = get(h.(objectlist{ii}), 'Type');
     if iscell(objtype)
