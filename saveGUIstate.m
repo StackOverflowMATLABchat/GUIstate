@@ -52,12 +52,17 @@ for ii = 1:length(objectlist)
         end
         
         if ~isempty(propstopull)
+            % Pull properties and save to output structure
+            % Structure is currently not preallocated, need to revisit
+            % later to figure out a robust method to preallocate for speed
             if iscell(propstopull)
                 for jj = 1:length(propstopull)
-                    asdf = 1;
+                    output.(objectlist{ii}).(propstopull{jj}) = ...
+                        get(h.(objectlist{ii}), propstopull{jj});
                 end
             else
-                asdf = 1;
+                output.(objectlist{ii}).(propstopull) = ...
+                    get(h.(objectlist{ii}), propstopull);
             end
         end
     end
